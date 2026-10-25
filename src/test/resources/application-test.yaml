@@ -1,0 +1,19 @@
+spring:
+  ai:
+    openai:
+      api-key: test-api-key
+    cafe:
+      base-url: http://localhost
+      api-key: test-cafe-key
+      endpoint: http://localhost
+
+  weather:
+    api:
+      api-key: test-weather-key
+
+  custom:
+    vectorstore:
+      opensearch:
+        username: test-user
+        password: test-password
+

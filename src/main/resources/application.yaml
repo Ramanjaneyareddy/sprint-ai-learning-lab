@@ -9,7 +9,7 @@ spring:
       memory:
         repository:
           jdbc:
-            initialize-schema: always
+            initialize-schema: never
     custom:
       vectorstore:
         enabled: false
@@ -17,8 +17,8 @@ spring:
         # vector_store table is auto created
         opensearch:
           uris: http://localhost:9200
-          username: ${OPENSEARCH_USERNAME}
-          password: ${OPENSEARCH_PASSWORD}
+          username: ${OPENSEARCH_USERNAME:}
+          password: ${OPENSEARCH_PASSWORD:}
           index-name: spring-ai-document-index
           initialize-schema: true
           similarity-function: cosinesimil
@@ -27,7 +27,7 @@ spring:
 
 
     openai:
-      api-key: ${API_KEY_OPENAI}
+      api-key: ${API_KEY_OPENAI:test-api-key}
       chat:
         options:
           model: gpt-4.1
@@ -45,13 +45,13 @@ spring:
 
     cafe:
       enabled: false
-      base-url: ${AICAFE_BASE_URL}
-      api-key: ${AICAFE_API_KEY}
+      base-url: ${AICAFE_BASE_URL:http://localhost}
+      api-key: ${AICAFE_API_KEY:}
       completion-path: /openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview
       embedding-path: /openai/deployments/ada/embeddings?api-version=2023-05-15
       embedding-deployment-name: ADA
       chat-deployment-name: gpt-4.1
-      endpoint: ${AICAFE_ENDPOINT}
+      endpoint: ${AICAFE_ENDPOINT:http://localhost}
       api-version: 2024-12-01-preview
       model: gpt-4.1
 
@@ -59,7 +59,7 @@ spring:
   weather:
     api:
       base-url: http://api.weatherapi.com/v1
-      api-key: ${WEATHER_API_KEY}
+      api-key: ${WEATHER_API_KEY:}
 
 # enable this property to use h2 database (lightweight in-memory/file based)
   h2:

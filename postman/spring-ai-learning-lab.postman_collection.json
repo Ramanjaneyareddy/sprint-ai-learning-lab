@@ -1,0 +1,914 @@
+{
+  "info": {
+    "name": "Spring AI Learning Lab",
+    "_postman_id": "c4d71d6f-6ce3-4f7f-8e87-6d829f5e7e71",
+    "description": "Postman collection for all discovered endpoints in spring-ai-learning-lab.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "conversationId",
+      "value": "conv-001"
+    },
+    {
+      "key": "tenant",
+      "value": "ORG"
+    },
+    {
+      "key": "userId",
+      "value": "demo-user"
+    }
+  ],
+  "item": [
+    {
+      "name": "BasicChatController",
+      "item": [
+        {
+          "name": "GET /chat/ask-me",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/chat/ask-me?message=Tell%20me%20something%20about%20yourself.",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "ask-me"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "Tell me something about yourself."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /chat/ask",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/chat/ask?message=Tell%20me%20something%20about%20yourself.",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "ask"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "Tell me something about yourself."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /chat/joke",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/chat/joke?message=Tell%20me%20a%20dad%20joke%20about%20Artificial%20Intelligence.",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "joke"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "Tell me a dad joke about Artificial Intelligence."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ChatController",
+      "item": [
+        {
+          "name": "GET /chat/",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/chat/?msg=Write%20a%20Java%20function%20for%20factorial",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "msg",
+                  "value": "Write a Java function for factorial"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /chat/{conversationId}",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "How do I use streams in Java?"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/chat/{{conversationId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "{{conversationId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GeneralPurposeChatController",
+      "item": [
+        {
+          "name": "GET /popular",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/popular?genre=tech",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "popular"
+              ],
+              "query": [
+                {
+                  "key": "genre",
+                  "value": "tech"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /dest",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/dest?country=India",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dest"
+              ],
+              "query": [
+                {
+                  "key": "country",
+                  "value": "India"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /authors/{author}",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/authors/Robert%20Martin",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authors",
+                "Robert Martin"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /byauthor",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/byauthor?author=Chetan%20Bhagat",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "byauthor"
+              ],
+              "query": [
+                {
+                  "key": "author",
+                  "value": "Chetan Bhagat"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "StreamChatController",
+      "item": [
+        {
+          "name": "GET /chat/stream",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/chat/stream?query=Tell%20me%20the%20new%20features%20of%20Java.",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "stream"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "Tell me the new features of Java."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /chat/user-aware",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/chat/user-aware?query=Who%20are%20you%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "user-aware"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "Who are you?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /chat/persistent/user-aware",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/chat/persistent/user-aware?query=Who%20are%20you%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "persistent",
+                "user-aware"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "Who are you?"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RAGController",
+      "item": [
+        {
+          "name": "GET /rag/answer",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/rag/answer?q=What%20is%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rag",
+                "answer"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "What is Java?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /rag/answer-query",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/rag/answer-query?q=What%20is%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rag",
+                "answer-query"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "What is Java?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /rag/answer-coding-doubt",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/rag/answer-coding-doubt?q=What%20is%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rag",
+                "answer-coding-doubt"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "What is Java?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /rag/answer-from-document",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-TENANT",
+                "value": "{{tenant}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/rag/answer-from-document?question=Who%20works%20in%20department%20alpha%3F&document-id=DOC1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rag",
+                "answer-from-document"
+              ],
+              "query": [
+                {
+                  "key": "question",
+                  "value": "Who works in department alpha?"
+                },
+                {
+                  "key": "document-id",
+                  "value": "DOC1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /rag/multi-hop-search",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-TENANT",
+                "value": "{{tenant}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/rag/multi-hop-search?question=Who%20works%20in%20department%20alpha%3F&start-document-id=DOC1&maxHops=3&topK=5&threshold=0.3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rag",
+                "multi-hop-search"
+              ],
+              "query": [
+                {
+                  "key": "question",
+                  "value": "Who works in department alpha?"
+                },
+                {
+                  "key": "start-document-id",
+                  "value": "DOC1"
+                },
+                {
+                  "key": "maxHops",
+                  "value": "3"
+                },
+                {
+                  "key": "topK",
+                  "value": "5"
+                },
+                {
+                  "key": "threshold",
+                  "value": "0.3"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /rag/search",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/rag/search?question=What%20is%20class%20in%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rag",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "question",
+                  "value": "What is class in Java?"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ExplainController",
+      "item": [
+        {
+          "name": "GET /explain1",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/explain1?message=What%20is%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "explain1"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "What is Java?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /explain2",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/explain2?message=What%20is%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "explain2"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "What is Java?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /explain3",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/explain3?message=What%20is%20Java%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "explain3"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "What is Java?"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataAugmentationController",
+      "item": [
+        {
+          "name": "GET /sports",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/sports?message=What%20sports%20are%20being%20included%20in%20the%202026%20Olympics%3F&stuffit=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sports"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "What sports are being included in the 2026 Olympics?"
+                },
+                {
+                  "key": "stuffit",
+                  "value": "false"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /weather",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/weather?query=What%20is%20current%20temperature%20in%20Berlin%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "What is current temperature in Berlin?"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /info",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/info?msg=What%20is%20current%20time%20in%20Berlin%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "info"
+              ],
+              "query": [
+                {
+                  "key": "msg",
+                  "value": "What is current time in Berlin?"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataFeedController",
+      "item": [
+        {
+          "name": "POST /data-feed/save-java-test-data",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/data-feed/save-java-test-data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "data-feed",
+                "save-java-test-data"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /data-feed/save-big-bunny-subtitle-test-data",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/data-feed/save-big-bunny-subtitle-test-data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "data-feed",
+                "save-big-bunny-subtitle-test-data"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /data-feed/save-employee-project-test-data",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/data-feed/save-employee-project-test-data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "data-feed",
+                "save-employee-project-test-data"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /data-feed/save-customer-test-data",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/data-feed/save-customer-test-data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "data-feed",
+                "save-customer-test-data"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /data-feed/save-last-signal-subtitle-data",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/data-feed/save-last-signal-subtitle-data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "data-feed",
+                "save-last-signal-subtitle-data"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ImageController",
+      "item": [
+        {
+          "name": "GET /ai-image/v1/gen",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/ai-image/v1/gen?context=summer%20days&image-width=1792&image-height=1024",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ai-image",
+                "v1",
+                "gen"
+              ],
+              "query": [
+                {
+                  "key": "context",
+                  "value": "summer days"
+                },
+                {
+                  "key": "image-width",
+                  "value": "1792"
+                },
+                {
+                  "key": "image-height",
+                  "value": "1024"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AudioController",
+      "item": [
+        {
+          "name": "GET /audio/v1/transcribe",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/audio/v1/transcribe?filename=java.m4a",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "audio",
+                "v1",
+                "transcribe"
+              ],
+              "query": [
+                {
+                  "key": "filename",
+                  "value": "java.m4a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /audio/v2/transcribe",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/audio/v2/transcribe?filename=java.m4a",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "audio",
+                "v2",
+                "transcribe"
+              ],
+              "query": [
+                {
+                  "key": "filename",
+                  "value": "java.m4a"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "TravelItineraryController",
+      "item": [
+        {
+          "name": "GET /travel-itinerary/",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/travel-itinerary/?source=Pune&destination=Mumbai",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "travel-itinerary",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "source",
+                  "value": "Pune"
+                },
+                {
+                  "key": "destination",
+                  "value": "Mumbai"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "HRAdvisorController",
+      "item": [
+        {
+          "name": "GET /hr-advisor/",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/hr-advisor/?query=What%20is%20your%20name%3F",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "hr-advisor",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "What is your name?"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "PersonalBankingAdvisorController",
+      "item": [
+        {
+          "name": "GET /banking-advisor/",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/banking-advisor/?userId={{userId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "banking-advisor",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "{{userId}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SnapSubtitleController",
+      "item": [
+        {
+          "name": "GET /subtitle/snap-to-position",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/subtitle/snap-to-position?context=external%20sensors%20just%20rebooted%20on%20their%20own",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subtitle",
+                "snap-to-position"
+              ],
+              "query": [
+                {
+                  "key": "context",
+                  "value": "external sensors just rebooted on their own"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

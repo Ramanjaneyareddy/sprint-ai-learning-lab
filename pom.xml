@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>25</java.version>
+    <lombok.version>1.18.38</lombok.version>
         <!--1.0.0-M4 - function calling,2.0.0-M2 - tool calling-->
 		<spring-ai.version>2.0.0-M2</spring-ai.version>
 	</properties>
@@ -142,7 +143,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+	            <version>${lombok.version}</version>
+	            <scope>provided</scope>
         </dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -163,6 +165,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
 

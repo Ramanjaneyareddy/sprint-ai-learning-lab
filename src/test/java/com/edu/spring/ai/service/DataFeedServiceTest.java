@@ -2,8 +2,11 @@ package com.edu.spring.ai.service;
 
 import com.edu.spring.ai.repository.CustomerRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.core.io.ClassPathResource;
 
@@ -13,6 +16,7 @@ import org.springframework.core.io.ClassPathResource;
  *
  *
  */
+@ExtendWith(MockitoExtension.class)
 public class DataFeedServiceTest {
 
     @Mock
@@ -20,7 +24,12 @@ public class DataFeedServiceTest {
 
     @Mock
     CustomerRepository customerRepository;
-    DataFeedService dataFeedService = new DataFeedService(vectorStore, customerRepository);
+    private DataFeedService dataFeedService;
+
+    @BeforeEach
+    void setUp() {
+        dataFeedService = new DataFeedService(vectorStore, customerRepository);
+    }
 
 
     @Test
