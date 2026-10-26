@@ -27,7 +27,7 @@ spring:
 
 
     openai:
-      api-key: ${API_KEY_OPENAI:test-api-key}
+      api-key: ${AICAFE_API_KEY:}
       chat:
         options:
           model: gpt-4.1
