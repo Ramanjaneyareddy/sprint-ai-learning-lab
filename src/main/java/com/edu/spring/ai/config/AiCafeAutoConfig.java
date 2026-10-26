@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  */
 @Configuration
 @ConditionalOnBooleanProperty(prefix = "spring.ai.cafe", name = "enabled")

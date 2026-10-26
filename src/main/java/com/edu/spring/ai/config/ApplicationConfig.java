@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  */
 @Configuration
 public class ApplicationConfig {

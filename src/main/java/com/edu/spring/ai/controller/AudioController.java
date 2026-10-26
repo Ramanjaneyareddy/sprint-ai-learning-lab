@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/27/2026
  *
  *  Audio to text with SpringAI

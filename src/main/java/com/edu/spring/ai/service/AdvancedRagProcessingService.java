@@ -15,7 +15,7 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/27/2026
  *
  *

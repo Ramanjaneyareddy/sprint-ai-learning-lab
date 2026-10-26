@@ -44,14 +44,14 @@ spring:
 
 
     cafe:
-      enabled: false
-      base-url: ${AICAFE_BASE_URL:http://localhost}
+      enabled: true
+      base-url: ${AICAFE_BASE_URL:https://aicafe.hcl.com/AICafeService/api/v1/subscription}
       api-key: ${AICAFE_API_KEY:}
       completion-path: /openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview
       embedding-path: /openai/deployments/ada/embeddings?api-version=2023-05-15
       embedding-deployment-name: ADA
       chat-deployment-name: gpt-4.1
-      endpoint: ${AICAFE_ENDPOINT:http://localhost}
+      endpoint: ${AICAFE_ENDPOINT:https://aicafe.hcl.com/AICafeService/api/v1/subscription}
       api-version: 2024-12-01-preview
       model: gpt-4.1
 

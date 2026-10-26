@@ -4,7 +4,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * AiCafeChatClientService: uses Spring AI's ChatClient to interact with OpenAI
  */
 @Service

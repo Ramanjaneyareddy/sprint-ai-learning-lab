@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 import java.net.URISyntaxException;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 3/8/2026
  *
  *

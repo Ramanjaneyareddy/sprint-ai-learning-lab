@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/11/2026
  *
  * Builder class to get the weather information from WeatherAPI https://www.weatherapi.com/

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.function.Function;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/11/2026
  *
  * Gets the weather information from WeatherAPI https://www.weatherapi.com/

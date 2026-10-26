@@ -3,7 +3,7 @@ package com.edu.spring.ai.dto;
 import java.util.List;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  */
 public class Response {
     private List<Messages> choices;

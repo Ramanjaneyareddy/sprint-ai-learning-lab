@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  */
 @Tag(name = "Lab4: Data Augmentation techniques", description = """
         This Lab demonstrates the usage of a Data Augmentation techniques such as Stuffing, Tool Calling/Function calling when retrieving data from LLM.

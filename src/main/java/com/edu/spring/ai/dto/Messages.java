@@ -1,7 +1,7 @@
 package com.edu.spring.ai.dto;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  */
 public class Messages {
     private Message message;

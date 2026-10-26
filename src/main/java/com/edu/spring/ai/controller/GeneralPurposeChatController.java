@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  *
  * Controller class to consumer AI services provided by OpenAI platform.
  * This class demonstrates the usage of interacting with AiCafe via Spring AI's ChatModel.

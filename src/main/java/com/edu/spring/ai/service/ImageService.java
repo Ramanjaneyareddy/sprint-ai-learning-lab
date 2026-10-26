@@ -8,7 +8,7 @@ import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/27/2026
  *
  *

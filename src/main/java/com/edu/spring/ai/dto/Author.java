@@ -3,7 +3,7 @@ package com.edu.spring.ai.dto;
 import java.util.List;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/10/2026
  *
  *

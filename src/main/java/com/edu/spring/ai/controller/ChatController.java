@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * Advisor
  *     - It works like a middleware or interceptor
  *     - whenever user sends a request as a prompt to chatclient. First it will goto Advisor(write some cross cutting concerns). Now advisor will send the query to LLM. Finally LLM will generate the response, after that we again call advisor and then we send final response to user
@@ -126,7 +126,7 @@ public class ChatController {
             and it uses implementation class InMemoryChatMemoryRepository which creates
             ConcurrentHashMap and store 20 msgs.
             
-            e.g. Prompt1: My name is Rohit Muneshwar.
+            e.g. Prompt1: My name is Ramanjaneya Reddy Sreeyapu Reddy.
                  Prompt2: What is your name?
     """)
     @ApiResponses(value = {

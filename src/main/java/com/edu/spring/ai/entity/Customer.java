@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/16/2026
  *
  *

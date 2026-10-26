@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * AiCafeChatModelService: uses Spring AI's OpenAI ChatModel to interact with OpenAI
  */
 @Service

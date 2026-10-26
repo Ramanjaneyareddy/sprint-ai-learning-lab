@@ -11,7 +11,7 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.core.io.ClassPathResource;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 3/1/2026
  *
  *

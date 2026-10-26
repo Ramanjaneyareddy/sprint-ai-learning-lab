@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * Examples implemented as a part of practicing integration of Spring AI.
  * In this example RestTemplate, Spring AI's ChatClient and ChatModel and used to get the response from LLM model.
  *

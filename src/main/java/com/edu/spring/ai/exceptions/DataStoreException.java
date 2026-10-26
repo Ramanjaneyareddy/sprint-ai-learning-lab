@@ -3,7 +3,7 @@ package com.edu.spring.ai.exceptions;
 import lombok.Data;
 
 /**
- * @author Rohit Muneshwar
+ * @author Ramanjaneya Reddy Sreeyapu Reddy
  * @created on 2/24/2026
  *
  *
