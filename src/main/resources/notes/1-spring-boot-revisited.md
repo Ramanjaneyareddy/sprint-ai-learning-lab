@@ -261,10 +261,8 @@ private Integer age;
 
 ---
 
-## 🌟 Developer/Contributor
-Name: Rohit Shamrao Muneshwar  
-Email: rohit.muneshwar1406@gmail.com  
-LinkedIn Profile: [Click Here](https://www.linkedin.com/in/rohit-muneshwar-a9079258/)  
-Other Github repositories: [Click Here](https://github.com/rohit1406?tab=repositories)
+## 🌟 Author: Ramanjaneya Reddy
+([LinkedIn](https://www.linkedin.com/in/ramanjaneyareddys/), [GitHub](https://github.com/Ramanjaneyareddy?tab=repositories)).
+
 
 ---

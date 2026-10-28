@@ -1,82 +1,166 @@
-# About this Project
-The following Spring AI concepts are implemented in this repository.
-1. Integration of Spring AI into Spring Boot application
+# Spring AI Learning Lab
 
-    [Spring Boot Revisited](./src/main/resources/notes/1-spring-boot-revisited.md)
-2. Exposing REST APIs for taking user's input as a prompt, make a call to OpenAI for processing the request and get the output from OpenAI to send it back to the User.
-3. Use of UserMessage, AssistantMessage and SystemMessage while generating prompts
-4. Use of String Templates (.st) for dynamic prompting
-5. Output Convertors to convert the output received from OpenAI and display it to the user. In this demonstration ListOutputConvertor, MapOutputConvertor and BeanOutputConvertors are used.
-6. Types of Prompting are demonstrated as well: Zero Shot Prompting, Few Shot Prompting and Chain of Thought (CoT) prompting
+A hands-on Spring Boot project that walks through Spring AI step by step: prompts, output converters, tool calling, advisors, chat memory, streaming, RAG (simple, filtered, multi-hop and advanced), audio, images and a few small assignments. It is built to run against **HCL AI Cafe** (an Azure OpenAI style gateway), and can also be pointed at OpenAI.
 
-   [Spring AI notes](./src/main/resources/notes/2-spring-ai-intro.md) And [Prompts notes](./src/main/resources/notes/3-spring-ai-prompts.md)
-7. Data Augmentation Techniques such as Stuffing, Tool Calling/Function calling (used in lower versions of spring ai - 1.0.6) are utilized while retrieving data from LLM.
-8. Use of ChatMemory: to remember the conversation history and form the context with it to answer the upcoming questions from the user.
+## Tech stack
 
-    [Spring AI Data Augmentation Techniques](./src/main/resources/notes/4-spring-ai-data-augmentation-techniques.md)
-9. Use of Advisors: to intercept the request
+| Area | Choice |
+|---|---|
+| Language / build | Java 25, Maven |
+| Framework | Spring Boot 4.0.2 (Web MVC, Data JPA, Actuator) |
+| AI | Spring AI 2.0.0-M2 (OpenAI starter, chat-memory JDBC, RAG, advisors, Tika reader) |
+| Vector store | OpenSearch (optional); a no-op store is used when it is disabled |
+| Databases | H2 in-memory (default), SQLite or PostgreSQL (optional) |
+| API docs | springdoc OpenAPI / Swagger UI |
 
-    [Advisors](./src/main/resources/notes/5-spring-ai-advisors.md) And [Data Streaming](./src/main/resources/notes/6-spring-ai-data-streaming.md)
-10. RAG using manual search request creation, QuestionAnswerAdvisor, RetrievalAugmentationAdvisor
+## What is implemented
 
-    [Simple RAG Notes](./src/main/resources/notes/7-spring-ai-rag.md)
-11. Searching through Documents with document id and tenant id and topic with QuestionAnswerAdvisor
-12. MultiHop RAG: search through multiple files and chain of documents (chained retrieval). Model those relations as metadata.
+1. **Integration:** the same question through `ChatClient`, `ChatModel` and a plain `RestTemplate` call. See [Spring Boot revisited](./src/main/resources/notes/1-spring-boot-revisited.md) and [Spring AI intro](./src/main/resources/notes/2-spring-ai-intro.md).
+2. **Messages and prompts:** `SystemMessage`, `UserMessage`, `AssistantMessage`, `PromptTemplate` and String Template (`.st`) files.
+3. **Output converters:** `ListOutputConverter`, `MapOutputConverter`, `BeanOutputConverter`.
+4. **Prompting styles:** zero-shot, few-shot, chain-of-thought. See [Prompts notes](./src/main/resources/notes/3-spring-ai-prompts.md).
+5. **Data augmentation:** prompt stuffing and tool calling with `@Tool` (date/time, alarm, FX rate, weather, customer lookup). See [Data augmentation](./src/main/resources/notes/4-spring-ai-data-augmentation-techniques.md).
+6. **Advisors and chat memory:** `MessageChatMemoryAdvisor`, `PromptChatMemoryAdvisor`, `SimpleLoggerAdvisor`, `SafeGuardAdvisor` and a custom `TokenCalculatorAdvisor`. See [Advisors](./src/main/resources/notes/5-spring-ai-advisors.md).
+7. **Streaming and per-user memory:** `Flux<String>` responses, in-memory and JDBC chat memory keyed by a `user-id` header. See [Data streaming](./src/main/resources/notes/6-spring-ai-data-streaming.md).
+8. **RAG:** manual retrieval, `QuestionAnswerAdvisor`, `RetrievalAugmentationAdvisor`, metadata filters (document id, tenant, topic). See [RAG notes](./src/main/resources/notes/7-spring-ai-rag.md).
+9. **Multi-hop RAG:** follows document-to-document references stored as metadata. See [Multi-file RAG](./src/main/resources/notes/8-spring-ai-work-with-multiple-files-rag.md).
+10. **Advanced RAG:** query rewrite, translation, multi-query expansion, retrieval, joining and augmentation. See [Advanced RAG](./src/main/resources/notes/9-advanced-rag.md).
+11. **Audio and images:** speech-to-text and text-to-image. See [Audio and images](./src/main/resources/notes/10-audio-and-images.md).
+12. **Agents and MCP:** theory notes only (no code yet). See [AI agents and MCP](./src/main/resources/notes/11-ai-agents-and-mcp.md).
 
-    [Multihof RAG Notes](./src/main/resources/notes/8-spring-ai-work-with-multiple-files-rag.md) 
-13. Advanced RAG: Stages of Rag pipelines - Pre retreival, Retrieval, Post retreival, Generation
+### Assignments
 
-    [Advanced RAG](./src/main/resources/notes/9-advanced-rag.md)
-14. Text to Audio/Image generations
+1. **Travel itinerary:** `PromptTemplate` for dynamic values plus a system message for the persona.
+2. **Personal banking advisor:** balance lookup from the `CUSTOMER` table through a tool.
+3. **HR advisor:** remembers earlier questions, logs prompts and responses, and blocks restricted topics.
+4. **Subtitle snap:** finds the time code in an SRT subtitle file that matches a described scene (RAG).
 
-    [Text-to-Audio/Images Notes](./src/main/resources/notes/10-audio-and-images.md)
-15. AI Agents and MCPs
+## Prerequisites
 
-    [AI Agents and MCPs Notes](./src/main/resources/notes/11-ai-agents-and-mcp.md)
+- JDK 25 and Maven (or the Maven wrapper)
+- An AI Cafe (or OpenAI) key
+- Optional: OpenSearch for the vector store ([install notes](./src/main/resources/notes/install-configure-opensearch-vector-db.md))
 
-# Assignments Implemented
-1. Create a SpringBoot service using SpringAI that takes dynamic user input to generate a customized travel itinerary. Participants must demonstrate how to use PromptTemplate to manage dynamic variables and a System Message to define the Persona.
-2. You are building a Personal Banking Advisor using SpringAI. The advisor must be able to retrieve the user's current balance from a database (imagine we have a database with all customer details) using tool calling mechanism.
-3. You are developing an AI Advisor for a corporate HR department. The advisor must meet 3 requirements:
-    - It must remember the users previous questions to handle followup queries
-    - All raw prompts and model responses must be logged for internal review
-    - It must block any questions related to internal salary data or non-work topics
+## Configuration
 
+Set these environment variables **before** starting the app, then restart your terminal or IDE so they are picked up.
 
+| Variable | Required | Purpose |
+|---|---|---|
+| `AICAFE_API_KEY` | Yes | AI Cafe subscription key (also used as `spring.ai.openai.api-key`) |
+| `AICAFE_BASE_URL` | Yes | Gateway URL, for example `https://aicafe.hcl.com/AICafeService/api/v1/subscription` (no trailing slash) |
+| `AICAFE_ENDPOINT` | Yes | Same gateway URL |
+| `WEATHER_API_KEY` | For `/weather` | Key from [weatherapi.com](https://www.weatherapi.com/) |
+| `OPENSEARCH_USERNAME`, `OPENSEARCH_PASSWORD` | Only with the vector store | OpenSearch credentials |
 
-### Prerequisites to Run the application
-To run the application you need to set environment variables 
-- **API_KEY_OPENAI** - subscription Key from [OpenAI](https://api.openai.com/) api provider.
-- **WEATHER_API_KEY** - api key from the [weather api provider](http://api.weatherapi.com/v1).
-- To Use Vector Database:
-  - [OpenSearch installation for Vector database](https://docs.opensearch.org/latest/install-and-configure/install-opensearch/windows/)
-  - enable this property -> spring.ai.vectorstore.custom.opensearch.enabled: true
-  - configure further opensearch related properties in properties file
+> The older `API_KEY_OPENAI` variable is no longer read. Do not commit keys to the repository.
 
-### Endpoints Exposed
-Start the server locally and refer to [Swagger API](http://localhost:8080/swagger-ui/index.html) for the endpoint details and technical documentation.
+### Turn AI Cafe on
 
-### Some Useful links
-[Configure H2 in-memory database in Spring Boot](https://medium.com/@madhurajayashanka/h2-database-on-spring-boot-a-beginners-guide-8cc49c27e83c)
+AI Cafe support is **off by default** (`spring.ai.cafe.enabled: false`). With it off, requests go to the default OpenAI URL and your AI Cafe key is rejected as invalid. Enable it in `application.yaml`:
 
-[How Spring Boot initializes data on successful start up](https://medium.com/@AlexanderObregon/running-sql-scripts-automatically-at-spring-boot-startup-62ae2dd03087)
+```yaml
+spring:
+  ai:
+    cafe:
+      enabled: true
+```
 
-[Spring Data JPA](https://medium.com/@bshiramagond/jpa-with-spring-boot-a-comprehensive-guide-with-examples-e07da6f3d385)
+or start with `SPRING_AI_CAFE_ENABLED=true`. On startup you should see the log line `Creating custom OpenAiApi bean`. When enabled, the app sends the key in an `api-key` header and calls paths such as `/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview`. Deployment names (`gpt-4.1`, `ada`) and the API version live under `spring.ai.cafe` in `application.yaml`.
 
-[Configure SQLite](https://medium.com/@AlexanderObregon/using-spring-boot-with-sqlite-for-lightweight-apps-6c7624a0f438)
+### Optional: vector store (needed for RAG endpoints)
 
-OpenSearch:
-[OpenSearch Windows Installation](https://docs.opensearch.org/latest/install-and-configure/install-opensearch/windows/)
+```yaml
+spring:
+  ai:
+    custom:
+      vectorstore:
+        enabled: true
+        opensearch:
+          uris: http://localhost:9200
+```
 
-[OpenSearch Dashboard Windows Installation](https://docs.opensearch.org/latest/install-and-configure/install-dashboards/windows/)
+Start OpenSearch first. When this flag is `false`, a no-op vector store is used, so RAG endpoints return no context. Embeddings for the vector store go through the configured OpenAI client (AI Cafe when it is enabled).
 
+### Optional: database
 
----
+H2 in memory is the default. To use SQLite or PostgreSQL, set `spring.custom.sqlite.datasource.enabled` or `spring.custom.postgres.datasource.enabled` to `true`. The `/chat/persistent/user-aware` endpoint only survives restarts when a file-based or server database is enabled.
 
-## 🌟 Developer/Contributor
-Name: Rohit Shamrao Muneshwar  
-Email: rohit.muneshwar1406@gmail.com  
-LinkedIn Profile: [Click Here](https://www.linkedin.com/in/rohit-muneshwar-a9079258/)  
-Other Github repositories: [Click Here](https://github.com/rohit1406?tab=repositories)
+## Run
 
----
+```bash
+mvn spring-boot:run
+```
+
+Open Swagger UI at <http://localhost:8080/swagger-ui.html>. The H2 console is enabled by default.
+
+### Load test data
+
+Call these once (POST) from Swagger before using the related features:
+
+| Endpoint | Loads |
+|---|---|
+| `/data-feed/save-java-test-data` | Java facts into the vector store |
+| `/data-feed/save-employee-project-test-data` | `docs/file1-3.docx` with tenant `ORG` and document references |
+| `/data-feed/save-last-signal-subtitle-data` | The SRT file in small chunks |
+| `/data-feed/save-big-bunny-subtitle-test-data` | A tiny subtitle sample |
+| `/data-feed/save-customer-test-data` | Two customers into the `CUSTOMER` table |
+
+## Endpoints
+
+| Lab | Endpoint | Notes |
+|---|---|---|
+| 1 | `GET /chat/ask-me`, `/chat/ask`, `/chat/joke` | ChatClient, ChatModel, RestTemplate |
+| 2 | `GET /popular`, `/dest`, `/authors/{author}`, `/byauthor` | Templates and output converters |
+| 3 | `GET /explain1`, `/explain2`, `/explain3` | Zero-shot, few-shot, chain-of-thought |
+| 4 | `GET /sports?stuffit=true`, `/weather`, `/info` | Stuffing and tool calling |
+| 5 | `GET /chat/?msg=`, `POST /chat/{conversationId}` | Advisors and memory |
+| 6 | `GET /chat/stream`, `/chat/user-aware`, `/chat/persistent/user-aware` | Header `user-id` required for the last two |
+| 7 | `GET /rag/answer`, `/rag/answer-query`, `/rag/answer-coding-doubt` | Manual, QuestionAnswerAdvisor, RetrievalAugmentationAdvisor |
+| 7 | `GET /rag/answer-from-document` | Params `question`, `document-id`; header `X-TENANT` |
+| 7 | `GET /rag/multi-hop-search` | Params `start-document-id`, `maxHops`, `topK`, `threshold`; header `X-TENANT` |
+| 7 | `GET /rag/search` | Advanced RAG pipeline |
+| 8 | `GET /audio/v1/transcribe`, `/audio/v2/transcribe` | Param `filename` (default `java.m4a`) |
+| 9 | `GET /ai-image/v1/gen` | Params `context`, `image-width`, `image-height` |
+| Assignments | `GET /travel-itinerary/`, `/banking-advisor/`, `/hr-advisor/`, `/subtitle/snap-to-position` | |
+
+## Project layout
+
+```
+src/main/java/com/edu/spring/ai
+  config/      AI Cafe client, vector store, data sources, chat options
+  controller/  REST endpoints (one class per lab)
+  service/     Business logic and Spring AI calls
+  tools/       @Tool classes (date/time, FX, weather, banking)
+  advisor/     Custom TokenCalculatorAdvisor
+  weather/     WeatherAPI client
+  entity, repository, dto, util, enums, exceptions
+src/main/resources
+  prompts/     String Template prompt files
+  docs/        Sample .docx and .txt files for RAG
+  notes/       Study notes for each lab
+  db/          schema.sql and sample databases
+```
+
+## Troubleshooting
+
+| Symptom | Likely cause and fix |
+|---|---|
+| "Invalid API key" | `spring.ai.cafe.enabled` is false, `AICAFE_API_KEY` is empty or stale, the key expired, or you are off the HCL network |
+| 404 from the gateway | Wrong base URL (trailing slash) or deployment name |
+| RAG answers say the query is not in the database | Vector store disabled, or sample data not loaded |
+| `/audio` or `/ai-image` fail | Audio is hard-coded to `https://api.openai.com`, and the image model uses the default OpenAI endpoint, so an AI Cafe key will not work for them |
+| `/weather` fails | `WEATHER_API_KEY` is missing |
+
+## Known limitations
+
+- Audio and image features call OpenAI directly, not AI Cafe.
+- The OpenSearch host is hard-coded to `http://localhost:9200` in `VectorStoreAutoConfig` (the `uris` property is not used).
+- Keyword blocking in `SafeGuardAdvisor` is a simple substring check and is easy to bypass.
+- In-memory chat memory is lost on restart.
+- MCP and agents are covered in notes only.
+
+## Developer/Contributor
+
+Author: Ramanjaneya Reddy 
+([LinkedIn](https://www.linkedin.com/in/ramanjaneyareddys/), [GitHub](https://github.com/Ramanjaneyareddy?tab=repositories)).
